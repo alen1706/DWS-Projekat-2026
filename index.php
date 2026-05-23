@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmoteka</title>
-    <link rel="stylesheet" href="stil.css">
+    <link rel="stylesheet" href="stil.css?v=<?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,8 +25,8 @@ if (!isset($_SESSION['user_id'])) {
         <a href="#popular">Movies</a>
         <a href="#series">Series</a>
         <a href="#mylist">Top Rated</a>
-        <span class="user-info">Zdravo, <?php echo htmlspecialchars($_SESSION['username']); ?> (<?php echo htmlspecialchars($_SESSION['role']); ?>)</span>
-        <a href="logout.php" class="logout-link">Odjavi se</a>
+        <a href="profil.php" class="user-profile-link" style="color: #ffd369 !important; font-weight: 700; text-decoration: none; cursor: pointer;">Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></a>
+        <a href="logout.php" class="logout-link">Logout</a>
     </nav>
 </header>
 
