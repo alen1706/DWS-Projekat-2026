@@ -10,8 +10,26 @@ CREATE TABLE IF NOT EXISTS korisnici (
     password VARCHAR(255) NOT NULL,
     role ENUM('admin', 'guest') DEFAULT 'guest'
 );
-ALTER TABLE korisnici ADD COLUMN bio VARCHAR(100) DEFAULT '';
-ALTER TABLE korisnici ADD COLUMN profilna_slika VARCHAR(255) DEFAULT 'guest.png';
+
+CREATE TABLE IF NOT EXISTS zbirke (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    naziv VARCHAR(255) NOT NULL,
+    tip ENUM('javna', 'privatna') DEFAULT 'privatna',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS zbirka_stavke (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    zbirka_id INT NOT NULL,
+    tmdb_id INT NOT NULL,
+    media_type ENUM('movie', 'tv') NOT NULL,
+    dodano_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (zbirka_id) REFERENCES zbirke(id) ON DELETE CASCADE
+);
+
+ALTER TABLE korisnici MODIFY COLUMN bio VARCHAR(100) DEFAULT '';
+ALTER TABLE korisnici MODIFY COLUMN profilna_slika VARCHAR(255) DEFAULT 'guest.png';
 
 INSERT INTO korisnici (username, password, role, ime, prezime, datum_rodenja) 
 VALUES ('admin', '$2y$10$w6Ym75M5nN4mNfE630Hn/.Z/F3VfJ6W/R1X/oY6.h7UuE3HfeD/mO', 'admin', 'Admin', 'Administrator', '2000-01-01')
