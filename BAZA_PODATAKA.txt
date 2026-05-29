@@ -5,10 +5,20 @@ CREATE TABLE IF NOT EXISTS korisnici (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ime VARCHAR(50) NOT NULL,
     prezime VARCHAR(50) NOT NULL,
-    datum_rodenja DATE NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'guest') DEFAULT 'guest'
+    role ENUM('admin', 'guest') DEFAULT 'guest',
+    bio VARCHAR(100) DEFAULT '',
+    profilna_slika VARCHAR(255) DEFAULT 'guest.png',
+    status ENUM('active', 'banned') DEFAULT 'active'
+);
+
+CREATE TABLE IF NOT EXISTS feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ime VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    poruka TEXT NOT NULL,
+    datum_slanja TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS zbirke (
@@ -16,7 +26,8 @@ CREATE TABLE IF NOT EXISTS zbirke (
     user_id INT NOT NULL,
     naziv VARCHAR(255) NOT NULL,
     tip ENUM('javna', 'privatna') DEFAULT 'privatna',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES korisnici(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS zbirka_stavke (
@@ -28,9 +39,25 @@ CREATE TABLE IF NOT EXISTS zbirka_stavke (
     FOREIGN KEY (zbirka_id) REFERENCES zbirke(id) ON DELETE CASCADE
 );
 
-ALTER TABLE korisnici MODIFY COLUMN bio VARCHAR(100) DEFAULT '';
-ALTER TABLE korisnici MODIFY COLUMN profilna_slika VARCHAR(255) DEFAULT 'guest.png';
+CREATE TABLE IF NOT EXISTS banovani_korisnici (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    korisnik_id INT NOT NULL,
+    razlog TEXT NOT NULL,
+    datum_bana TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (korisnik_id) REFERENCES korisnici(id) ON DELETE CASCADE
+);
 
-INSERT INTO korisnici (username, password, role, ime, prezime, datum_rodenja) 
-VALUES ('admin', '$2y$10$w6Ym75M5nN4mNfE630Hn/.Z/F3VfJ6W/R1X/oY6.h7UuE3HfeD/mO', 'admin', 'Admin', 'Administrator', '2000-01-01')
+CREATE TABLE IF NOT EXISTS postavke_sistema (
+    kljuc VARCHAR(50) PRIMARY KEY,
+    vrijednost TEXT
+);
+
+INSERT INTO postavke_sistema (kljuc, vrijednost) 
+VALUES ('hero_index', '0') 
+ON DUPLICATE KEY UPDATE vrijednost=vrijednost;
+
+ALTER TABLE korisnici MODIFY COLUMN email VARCHAR(255) UNIQUE AFTER ime;
+
+INSERT INTO korisnici (username, password, role, ime, prezime, datum_rodenja, status) 
+VALUES ('admin', 'admin123', 'admin', 'Admin', 'Administrator', '2000-01-01', 'active')
 ON DUPLICATE KEY UPDATE username=username;
