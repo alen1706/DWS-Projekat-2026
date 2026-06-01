@@ -44,9 +44,9 @@ $is_admin = ($is_logged && $_SESSION['role'] === 'admin');
         }
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 800px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         .team-card {
@@ -106,6 +106,11 @@ $is_admin = ($is_logged && $_SESSION['role'] === 'admin');
             font-style: italic;
             letter-spacing: 0.5px;
         }
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -157,6 +162,15 @@ $is_admin = ($is_logged && $_SESSION['role'] === 'admin');
             <h3>Alen Hajrić</h3>
             <div class="role">Full-Stack Developer</div>
             <p class="trait">"Pixel-perfect frontend crafter with an eye for stunning UI animations and clean, modern application layouts."</p>
+        </div>
+
+        <div class="team-card">
+            <div class="team-avatar">
+                <i class="fas fa-user-secret"></i>
+            </div>
+            <h3>Amar Humić</h3>
+            <div class="role">Full-Stack Developer</div>
+            <p class="trait">"Highly adaptable developer focused on scalable solutions, efficient problem-solving, and seamless integration between frontend and backend systems."</p>
         </div>
 
     </div>
