@@ -46,7 +46,7 @@ Sistem omogućava registraciju i prijavu korisnika, različite uloge (Admin i Gu
 
 ## 🧰 Tech Stack
 
-- PHP 8.4
+- PHP 8.2
 - MySQL (MariaDB – XAMPP)
 - JavaScript (Vanilla JS)
 - HTML5
