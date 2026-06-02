@@ -58,7 +58,7 @@ Sistem omogućava registraciju i prijavu korisnika, različite uloge (Admin i Gu
 
 ## 🏗️ Arhitektura sistema
 
-![arhitektura](slike/arhitektura.png)
+![arhitektura](arhitektura.png)
 
 ---
 
@@ -161,24 +161,24 @@ Kontakt stranica koristi Google Maps embed iframe za prikaz lokacije uz mogućno
 ## 📸 Screenshots
 - Landing page
 
-![Landing_page](slike/landing.PNG)
+![Landing_page](landing.PNG)
 
 - Login
 
-![Login](slike/login.PNG)
+![Login](login.PNG)
 
 - Registracija
 
-![Registracija](slike/registracija.PNG)
+![Registracija](registracija.PNG)
 
 - Početna
 
-![Početna](slike/pocetna.PNG)
+![Početna](pocetna.PNG)
 
 - Admin panel
 
-![admin_panel_1](slike/admin_panel1.PNG)
-![admin_panel_2](slike/admin_panel2.PNG)
+![admin_panel_1](admin_panel1.PNG)
+![admin_panel_2](admin_panel2.PNG)
 
 ---
 
