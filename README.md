@@ -180,5 +180,7 @@ Kontakt stranica koristi Google Maps embed iframe za prikaz lokacije uz mogućno
 ![admin_panel_1](admin_panel1.PNG)
 ![admin_panel_2](admin_panel2.PNG)
 
----
+- Mobile View
 
+- ![mobile_view](mobile_view.PNG)
+- ![mobile_view_tab](mobile_view1.PNG)
