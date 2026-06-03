@@ -33,7 +33,7 @@ Sistem omogućava registraciju i prijavu korisnika, različite uloge (Admin i Gu
 **Alen Hajrić**
 - Frontend dizajn (HTML/CSS)
 - Responsive layout i UI/UX
-- Kontakt stranica + Google Maps integracija
+- Kontakt stranica
 - Validacija formi (JS)
 
 **Amar Humić**
